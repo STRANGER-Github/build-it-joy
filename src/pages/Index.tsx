@@ -1,11 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import GridSection from "@/components/GridSection";
 
 const Index = () => {
+  const handleSectionClick = (section: string) => {
+    console.log(`Navigating to ${section}`);
+    // Add navigation logic here when needed
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="h-screen w-full overflow-hidden bg-background">
+      <div className="grid grid-cols-2 grid-rows-2 h-full">
+        <GridSection
+          title="ARCHITECT"
+          variant="dark"
+          onClick={() => handleSectionClick("architect")}
+          className="border-r border-b border-border"
+        />
+        <GridSection
+          title="ABOUT US"
+          variant="light"
+          onClick={() => handleSectionClick("about")}
+          className="border-b border-border"
+        />
+        <GridSection
+          title="HOME"
+          variant="light"
+          onClick={() => handleSectionClick("home")}
+          className="border-r border-border"
+        />
+        <GridSection
+          title="LIFE AT SKLTCOA"
+          variant="dark"
+          onClick={() => handleSectionClick("life")}
+        />
       </div>
     </div>
   );
