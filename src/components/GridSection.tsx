@@ -15,8 +15,8 @@ const GridSection = ({ title, variant, className, onClick }: GridSectionProps) =
     <div
       className={cn(
         "relative flex items-center justify-start p-8 cursor-pointer group overflow-hidden",
-        "transition-all duration-700 ease-out hover:scale-[1.02]",
-        isLight 
+        "transition-all duration-700 ease-out",
+        isLight
           ? "bg-grid-light text-grid-light-foreground" 
           : "bg-grid-dark text-grid-dark-foreground",
         isArchitect && "bg-cover bg-center bg-no-repeat",
