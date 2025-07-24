@@ -1,5 +1,8 @@
 import { cn } from "@/lib/utils";
-import architectModel from "@/assets/architect-model.jpg";
+import architectModel from "@/assets/architect-model.png";
+import aboutModel from "@/assets/about-model.png";
+import home from "@/assets/home-model.jpg";
+import lifeskltcoa from "@/assets/life@skltcoa-model.png";
 
 interface GridSectionProps {
   title: string;
@@ -23,8 +26,17 @@ const GridSection = ({
   isHovered 
 }: GridSectionProps) => {
   const isLight = variant === "light";
-  const isArchitect = title === "ARCHITECT";
-  
+
+  // Map each title to its image
+  const backgroundImages: Record<string, string> = {
+    "ARCHITECT": architectModel,
+    "ABOUT US": aboutModel,
+    "HOME": home,
+    "LIFE AT SKLTCOA": lifeskltcoa,
+  };
+
+  const backgroundImage = backgroundImages[title];
+
   return (
     <div
       className={cn(
@@ -40,19 +52,19 @@ const GridSection = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      {isArchitect && (
+      {backgroundImage && (
         <div 
           className={cn(
             "absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-in-out",
             isHovered ? "opacity-100" : "opacity-0"
           )}
-          style={{ backgroundImage: `url(${architectModel})` }}
+          style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       )}
       <div className="relative z-10">
         <h2 className={cn(
           "text-lg font-normal tracking-[0.2em] uppercase select-none transition-all duration-500 ease-in-out",
-          isArchitect && isHovered ? "text-white drop-shadow-lg" : ""
+          isHovered ? "text-white drop-shadow-lg" : ""
         )}>
           {title}
         </h2>

@@ -6,29 +6,94 @@ const Index = () => {
 
   const handleSectionClick = (section: string) => {
     console.log(`Navigating to ${section}`);
-    // Add navigation logic here when needed
   };
 
-  const getFlexBasis = (section: string) => {
-    if (hoveredSection === null) return "50%";
-    if (hoveredSection === section) {
-      return section === "ARCHITECT" ? "70%" : "50%";
+  // Row height logic
+  const getRowHeight = (row: "top" | "bottom") => {
+    if (hoveredSection === "ARCHITECT") {
+      return row === "top" ? "60%" : "40%";
     }
-    return "30%";
+    if (hoveredSection === "ABOUT US") {
+    return row === "top" ? "65%" : "35%";
+    }
+    if (hoveredSection === "HOME") {
+    return row === "bottom" ? "65%" : "35%";
+    }
+    if (hoveredSection === "LIFE AT SKLTCOA") {
+    return row === "bottom" ? "70%" : "30%";
+    }
+    return "50%";
+  };
+
+  // Column width logic
+  const getFlexBasis = (section: string) => {
+    if (hoveredSection === "ARCHITECT") {
+      switch (section) {
+        case "ARCHITECT":
+        case "LIFE AT SKLTCOA":
+          return "65%";
+        case "ABOUT US":
+        case "HOME":
+          return "35%";
+        default:
+          return "50%";
+      }
+    }
+    if (hoveredSection === "ABOUT US") {
+    switch (section) {
+      case "ABOUT US":
+      case "HOME":
+        return "70%";
+      case "ARCHITECT":
+      case "LIFE AT SKLTCOA":
+        return "30%";
+      default:
+        return "50%";
+      }
+    }
+    if (hoveredSection === "HOME") {
+    switch (section) {
+      case "HOME":
+      case "ABOUT US":
+        return "70%";
+        case "LIFE AT SKLTCOA":
+        case "ARCHITECT":
+        return "30%";
+      default:
+        return "50%";
+      }
+    }
+    if (hoveredSection === "LIFE AT SKLTCOA") {
+    switch (section) {
+      case "LIFE AT SKLTCOA":
+      case "ARCHITECT":
+        return "65%";
+        case "ABOUT US":
+        case "HOME":
+        return "35%";
+      default:
+        return "50%";
+      }
+    }
+
+    return "50%"; // default state
   };
 
   return (
     <div className="h-screen w-full overflow-hidden bg-background">
       <div className="flex flex-col h-full">
         {/* Top Row */}
-        <div className="flex h-1/2 transition-all duration-700 ease-in-out">
+        <div
+          className="flex transition-all duration-700 ease-in-out"
+          style={{ height: getRowHeight("top") }}
+        >
           <GridSection
             title="ARCHITECT"
             variant="dark"
             onClick={() => handleSectionClick("architect")}
             className="border-r border-b border-border transition-all duration-700 ease-in-out"
-            style={{ 
-              flexBasis: hoveredSection === "ARCHITECT" ? "70%" : hoveredSection === "ABOUT US" ? "30%" : "50%"
+            style={{
+              flexBasis: getFlexBasis("ARCHITECT")
             }}
             onMouseEnter={() => setHoveredSection("ARCHITECT")}
             onMouseLeave={() => setHoveredSection(null)}
@@ -39,23 +104,27 @@ const Index = () => {
             variant="light"
             onClick={() => handleSectionClick("about")}
             className="border-b border-border transition-all duration-700 ease-in-out"
-            style={{ 
-              flexBasis: hoveredSection === "ABOUT US" ? "70%" : hoveredSection === "ARCHITECT" ? "30%" : "50%"
+            style={{
+              flexBasis: getFlexBasis("ABOUT US")
             }}
             onMouseEnter={() => setHoveredSection("ABOUT US")}
             onMouseLeave={() => setHoveredSection(null)}
             isHovered={hoveredSection === "ABOUT US"}
           />
         </div>
+
         {/* Bottom Row */}
-        <div className="flex h-1/2 transition-all duration-700 ease-in-out">
+        <div
+          className="flex transition-all duration-700 ease-in-out"
+          style={{ height: getRowHeight("bottom") }}
+        >
           <GridSection
             title="HOME"
             variant="light"
             onClick={() => handleSectionClick("home")}
             className="border-r border-border transition-all duration-700 ease-in-out"
-            style={{ 
-              flexBasis: hoveredSection === "HOME" ? "70%" : hoveredSection === "LIFE AT SKLTCOA" ? "30%" : "50%"
+            style={{
+              flexBasis: getFlexBasis("HOME")
             }}
             onMouseEnter={() => setHoveredSection("HOME")}
             onMouseLeave={() => setHoveredSection(null)}
@@ -66,8 +135,8 @@ const Index = () => {
             variant="dark"
             onClick={() => handleSectionClick("life")}
             className="transition-all duration-700 ease-in-out"
-            style={{ 
-              flexBasis: hoveredSection === "LIFE AT SKLTCOA" ? "70%" : hoveredSection === "HOME" ? "30%" : "50%"
+            style={{
+              flexBasis: getFlexBasis("LIFE AT SKLTCOA")
             }}
             onMouseEnter={() => setHoveredSection("LIFE AT SKLTCOA")}
             onMouseLeave={() => setHoveredSection(null)}
