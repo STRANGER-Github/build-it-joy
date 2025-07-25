@@ -1,31 +1,37 @@
-import { cn } from "@/lib/utils";
-import architectModel from "@/assets/architect-model.png";
-import aboutModel from "@/assets/about-model.png";
-import home from "@/assets/home-model.jpg";
-import lifeskltcoa from "@/assets/life@skltcoa-model.png";
+"use client"
+
+import { Link } from "react-router-dom"
+import { cn } from "@/lib/utils"
+
+import architectModel from "@/assets/architect-model.png"
+import aboutModel from "@/assets/about-model.png"
+import home from "@/assets/home-model.jpg"
+import lifeskltcoa from "@/assets/life@skltcoa-model.png"
 
 interface GridSectionProps {
-  title: string;
-  variant: "dark" | "light";
-  className?: string;
-  style?: React.CSSProperties;
-  onClick?: () => void;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-  isHovered?: boolean;
+  title: string
+  variant: "dark" | "light"
+  linkTo?: string
+  className?: string
+  style?: React.CSSProperties
+  onClick?: () => void
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
+  isHovered?: boolean
 }
 
-const GridSection = ({ 
-  title, 
-  variant, 
-  className, 
+const GridSection = ({
+  title,
+  variant,
+  linkTo,
+  className,
   style,
-  onClick, 
-  onMouseEnter, 
+  onClick,
+  onMouseEnter,
   onMouseLeave,
-  isHovered 
+  isHovered,
 }: GridSectionProps) => {
-  const isLight = variant === "light";
+  const isLight = variant === "light"
 
   // Map each title to its image
   const backgroundImages: Record<string, string> = {
@@ -33,17 +39,17 @@ const GridSection = ({
     "ABOUT US": aboutModel,
     "CAREER": home,
     "LIFE AT SKLTCOA": lifeskltcoa,
-  };
+  }
 
-  const backgroundImage = backgroundImages[title];
+  const backgroundImage = backgroundImages[title]
 
   return (
     <div
       className={cn(
         "relative flex items-center justify-start p-8 cursor-pointer overflow-hidden",
         "transition-all duration-700 ease-in-out",
-        isLight 
-          ? "bg-grid-light text-grid-light-foreground" 
+        isLight
+          ? "bg-grid-light text-grid-light-foreground"
           : "bg-grid-dark text-grid-dark-foreground",
         className
       )}
@@ -52,8 +58,9 @@ const GridSection = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
+      {/* Background image */}
       {backgroundImage && (
-        <div 
+        <div
           className={cn(
             "absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-in-out",
             isHovered ? "opacity-100" : "opacity-0"
@@ -61,16 +68,33 @@ const GridSection = ({
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       )}
+
+      {/* Foreground title */}
       <div className="relative z-10">
-        <h2 className={cn(
-          "text-lg font-normal tracking-[0.2em] uppercase select-none transition-all duration-500 ease-in-out",
-          isHovered ? "text-white drop-shadow-lg" : ""
-        )}>
-          {title}
-        </h2>
+        {linkTo ? (
+          <Link
+            to={linkTo}
+            className={cn(
+              "text-lg font-normal tracking-[0.2em] uppercase select-none transition-all duration-500 ease-in-out",
+              isHovered ? "text-white drop-shadow-lg underline" : ""
+            )}
+            onClick={(e) => e.stopPropagation()} // prevent full block click
+          >
+            {title}
+          </Link>
+        ) : (
+          <h2
+            className={cn(
+              "text-lg font-normal tracking-[0.2em] uppercase select-none transition-all duration-500 ease-in-out",
+              isHovered ? "text-white drop-shadow-lg" : ""
+            )}
+          >
+            {title}
+          </h2>
+        )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default GridSection;
+export default GridSection

@@ -81,6 +81,7 @@ const Index = () => {
           <GridSection
             title="HOME"
             variant="dark"
+            linkTo="/home"
             onClick={() => handleSectionClick("architect")}
             className="border-r border-b border-border transition-all duration-700 ease-in-out"
             style={{ flexBasis: getFlexBasis("ARCHITECT") }}
