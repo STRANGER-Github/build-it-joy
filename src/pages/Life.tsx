@@ -1,19 +1,16 @@
 
 import Header from "@/components/Header"
+import LifeSidebar from "@/components/Sidebar/LifeSidebar";
 
 const Life = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center tracking-wide">LIFE@SKLTCOA</h1>
-          <div className="text-center text-gray-700">
-            <p className="text-lg leading-relaxed">
-              Discover campus life, events, and the vibrant community at SKLTCOA.
-            </p>
-          </div>
-        </div>
-      </main>
+      <div className="flex flex-col md:flex-row">
+  <main className="flex-1 p-6 md:mr-64">
+    {/* Your main academic content goes here */}
+  </main>
+  <LifeSidebar className="hidden md:block" />
+</div>
       <Header />
     </div>
   );
