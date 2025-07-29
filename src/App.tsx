@@ -15,6 +15,9 @@ import Career from "./pages/Career";
 import Life from "./pages/Life";
 import NotFound from "./pages/NotFound";
 
+//About imports
+import AboutRIS from "./pages/About/AboutRIS";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -33,6 +36,9 @@ const App = () => (
           <Route path="/career" element={<Career />} />
           <Route path="/life" element={<Life />} />
           <Route path="*" element={<NotFound />} />
+
+          
+          <Route path="/about/about-ris" element={<AboutRIS />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
