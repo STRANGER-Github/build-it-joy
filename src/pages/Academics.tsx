@@ -16,7 +16,7 @@ const academicMenuItems: MainMenuItem[] = [
 
 const Academics = () => {
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-gray-50 ">
       <div className="flex flex-col md:flex-row">
         <main className="flex-1 p-6 md:mr-64">
           {/* Your main academic content goes here */}

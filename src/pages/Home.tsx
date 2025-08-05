@@ -1,11 +1,61 @@
 import React from "react";
+import { Link } from "react-router-dom"; // ✅ React Router import
 import ScrollingBanner from "@/components/ScrollingBanner";
 import Header from "@/components/Header";
 import { ArrowRight } from "lucide-react";
-import buildingsketch from "@/assets/bldg-sketch.png";
-import enggcollege from "@/assets/engineering-clg.jpg";
-import risbuilding from "@/assets/ris-bldg.png";
-import stadium from "@/assets/stadium.png";
+
+const videoData = [
+  {
+    id: "aW3N1bzbjvg",
+    title: "Space & Architectural Education",
+    desc: "Insight into collaborative and experiential architectural education.",
+  },
+  {
+    id: "nmRzgk39Yis",
+    title: "Design as Experience",
+    desc: "Making space meaningful through design perspective.",
+  },
+  {
+    id: "yJRoxzS_w40",
+    title: "Spatial Toys",
+    desc: "Exploring spatial toys and their role in architecture learning.",
+  },
+  {
+    id: "Zvfodpx01Yc",
+    title: "Architectural Innovation",
+    desc: "New ideas and material experimentation in architecture.",
+  },
+  {
+    id: "vajGEwjNfus",
+    title: "Community Engagement",
+    desc: "How architecture interacts with social contexts.",
+  },
+  {
+    id: "m6Eh9sOHogA",
+    title: "Orientation & Introduction",
+    desc: "First year orientation and foundational concepts.",
+  },
+  {
+    id: "2I4T5C_8z6Y",
+    title: "Faculty Perspectives",
+    desc: "Faculty talking about teaching philosophy and methods.",
+  },
+  {
+    id: "cs2EANLs64g",
+    title: "Environment & Space",
+    desc: "Discussion on environment, space, and design thinking.",
+  },
+];
+
+// Define routes for each nav item
+const navLinks = [
+  { label: "COURSES", path: "/courses" },
+  { label: "LIFE@SKLTCOA", path: "/life" },
+  { label: "ABOUT US", path: "/about" },
+  { label: "EXAMINATION", path: "/examination" },
+  { label: "ADMISSION", path: "/admission" },
+  { label: "CONTACT", path: "/contact" },
+];
 
 const Home = () => {
   return (
@@ -14,62 +64,50 @@ const Home = () => {
       <ScrollingBanner />
 
       {/* Main content below */}
-      <main className="p-8">
-        <div className="max-w-6xl mx-auto">
+      <main className="p-3">
+        <div className="max-w-8xl mx-auto px-4">
           {/* Navigation Menu */}
-          <nav className="mb-8">
-            <ul className="flex flex-wrap gap-14 lg:text-3xl text-gray-600 font-medium">
-              {["COURSES", "LIFE@SKLTCOA", "ABOUT US", "EXAMINATION"].map((item, idx) => (
-                <li
-                  key={idx}
-                  className="flex items-center gap-2 whitespace-nowrap hover:text-gray-900 px-4 cursor-pointer transition-colors"
-                >
-                  <ArrowRight className="w-5 h-5 shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+          <nav className="my-2">
+            <div className="max-w-7xl mx-auto">
+              <ul className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-4 sm:gap-8 text-gray-700 font-semibold text-base lg:text-lg">
+                {navLinks.map(({ label, path }) => (
+                  <li key={label}>
+                    <Link to={path}>
+                      <div className="flex items-center gap-2 whitespace-nowrap px-3 py-2 hover:text-gray-900 hover:underline transition cursor-pointer">
+                        <ArrowRight className="w-4 h-4 shrink-0" />
+                        {label}
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </nav>
 
-          {/* Image Grid */}
-          <div className="grid grid-cols-6 gap-6">
-            {/* Top Left - Modern Building (col-span-4) */}
-            <div className="relative overflow-hidden rounded-lg shadow-lg col-span-6 md:col-span-4 h-auto md:h-96">
-              <img
-                src={risbuilding}
-                alt="Modern building with colorful glass panels"
-                className="w-full h-full object-fill hover:scale-105 transition-transform duration-300"
-              />
-            </div>
 
-            {/* Top Right - White Geometric Building (col-span-2) */}
-            <div className="relative overflow-hidden rounded-lg shadow-lg col-span-6 md:col-span-2 h-auto md:h-96">
-              <img
-                src={buildingsketch}
-                alt="White building with geometric patterns"
-                className="w-full h-full object-fill hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-
-            {/* Bottom Left - Stadium (col-span-2) */}
-            <div className="relative overflow-hidden rounded-lg shadow-lg col-span-6 md:col-span-2 h-auto md:h-96">
-              <img
-                src={stadium}
-                alt="Stadium with circular architecture"
-                className="w-full h-full object-fill hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-
-            {/* Bottom Right - Institutional Building (col-span-4) */}
-            <div className="relative overflow-hidden rounded-lg shadow-lg col-span-6 md:col-span-4 h-auto md:h-96">
-              <img
-                src={enggcollege}
-                alt="White institutional building"
-                className="w-full h-full object-fill hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
-
+          {/* YouTube Video Gallery with Titles & Descriptions */}
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {videoData.map(({ id, title, desc }) => (
+              <div key={id} className="w-full rounded-lg overflow-hidden shadow-lg bg-white flex flex-col">
+                <div className="relative" style={{ paddingTop: "56.25%" }}>
+                  <iframe
+                    loading="lazy"
+                    className="absolute top-0 left-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${id}?rel=0`}
+                    title={title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <div className="p-4 flex-1 flex flex-col">
+                  <h3 className="font-semibold text-lg text-gray-900 mb-1">{title}</h3>
+                  <p className="text-sm text-gray-600 flex-1">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </section>
         </div>
 
         <Header /> {/* Intentionally placed at bottom */}

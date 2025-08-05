@@ -1,91 +1,97 @@
-import Header from "@/components/Header"
-import MainMenu, { MainMenuItem } from "@/components/MainMenu"
-import Faculty1 from "@/assets/People/faculty1.png";
-import Faculty2 from "@/assets/People/faculty2.png";
-import Faculty3 from "@/assets/People/faculty3.png";
-import Faculty4 from "@/assets/People/faculty4.png";
+import { useState } from "react";
+import Header from "@/components/Header";
+import SampleImage1 from "@/assets/People/faculty1.png";
+import SampleImage2 from "@/assets/People/faculty2.png";
+import SampleImage3 from "@/assets/People/faculty3.png";
+import SampleImage4 from "@/assets/People/faculty4.png";
 
+type Faculty = {
+  name: string;
+  designation: string;
+  qualification: string;
+  experience: string;
+  image: string;
+};
 
-const peopleMenuItems: MainMenuItem[] = [
-  { name: "Faculty Directory", href: "/people/faculty" },
-  { name: "Faculty Development Program", href: "/people/staff" },
-  { name: "Faculty Publications", href: "/people/alumni" },
-  { name: "Faculty Achievements", href: "/people/visiting" },
-  { name: "Student Achievement", href: "/people/student-achievements" },
-]
-
-const facultyList = [
+const facultyData: Faculty[] = [
   {
-    name: "Ar. Jigesh Patel",
-    title: "Assistant Professor",
+    name: "Ar. Neha Bhatia",
+    designation: "Assistant Professor",
     qualification: "B. Arch",
-    experience: "11 Years",
-    teaching: "08 Years",
-    image: Faculty1,  
+    experience: "11 Years, Teaching Experience - 08 Years",
+    image: SampleImage1,
   },
   {
-    name: "Ar. Swapnil Ambre",
-    title: "Assistant Professor",
-    qualification: "B. Arch",
-    experience: "13 Years",
-    teaching: "05 Years",
-    image: Faculty2,
+    name: "Ar. John Doe",
+    designation: "Professor",
+    qualification: "M. Arch",
+    experience: "15 Years, Teaching Experience - 10 Years",
+    image: SampleImage2,
   },
   {
-    name: "Ar. Pranali Ohale",
-    title: "Assistant Professor",
-    qualification: "B. Arch, M.Arch. (Architecture Education)",
-    experience: "06 Years",
-    teaching: "02 Years",
-    image: Faculty3,
+    name: "Ar. Jane Smith",
+    designation: "Lecturer",
+    qualification: "B. Arch",
+    experience: "8 Years, Teaching Experience - 6 Years",
+    image: SampleImage3,
   },
   {
-    name: "Ar. Sachin Patil",
-    title: "Assistant Professor",
-    qualification: "B. Arch",
-    experience: "13 Years",
-    teaching: "09 Years",
-    image: Faculty4,
+    name: "Ar. Mark Lee",
+    designation: "Assistant Professor",
+    qualification: "M. Arch",
+    experience: "12 Years, Teaching Experience - 9 Years",
+    image: SampleImage4,
   },
 ];
 
-const People = () => {
+// Repeat the pattern to reach 16 entries
+const repeatedData = Array.from({ length: 4 }, () => facultyData).flat();
+
+export default function People() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
-      <div className="flex flex-col md:flex-row">
-        <main className="flex-1 p-6 md:mr-64">
-          <div className="max-w-5xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-10 text-left tracking-wide">
-              PEOPLE
-            </h1>
+    <div className="min-h-screen bg-gray-100 pb-20">
+      <div className="max-w-7xl mx-auto px-4 pt-16">
+        <h1 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-6">
+          FACULTIES
+        </h1>
+        <p className="text-gray-700 text-sm md:text-base max-w-4xl mb-10 leading-relaxed">
+          Smt. K. L. Tiwari College Of Architecture has a fully qualified and experienced faculty,
+          striving to offer the finest in teaching and research under the able guidance of their
+          HODs. Apart from teaching, they are also involved in Research and guiding students through their thesis.
+        </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {facultyList.map((faculty, index) => (
-                <div key={index} className="text-left">
-                  <img
-                    src={faculty.image}
-                    alt={faculty.name}
-                    className="w-30 h-40 mx-auto rounded-full object-cover grayscale"
-                  />
-                  <div className="mt-4 text-sm text-gray-800 leading-relaxed">
-                    <p className="font-semibold">{faculty.name}</p>
-                    <p>{faculty.title}</p>
-                    <p>{faculty.qualification}</p>
-                    <p>{faculty.experience} experience,</p>
-                    <p>Teaching experience – {faculty.teaching}</p>
-                  </div>
-                </div>
-              ))}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {repeatedData.map((faculty, index) => (
+            <div
+              key={index}
+              className="relative group overflow-hidden cursor-pointer"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <img
+                src={faculty.image}
+                alt={faculty.name}
+                className={`w-full h-auto object-cover grayscale transition-transform duration-500 ease-in-out ${
+                  hoveredIndex === index ? "scale-110 grayscale-0" : "scale-100"
+                }`}
+              />
+              <div
+                className={`absolute inset-0 bg-black bg-opacity-70 text-white p-4 flex flex-col justify-end transition-opacity duration-500 ease-in-out ${
+                  hoveredIndex === index ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <h3 className="text-lg font-semibold">{faculty.name}</h3>
+                <p className="text-sm">{faculty.designation}</p>
+                <p className="text-sm">{faculty.qualification}</p>
+                <p className="text-sm mt-1">{faculty.experience}</p>
+              </div>
             </div>
-          </div>
-        </main>
-
-        <MainMenu title="People" items={peopleMenuItems} />
+          ))}
+        </div>
       </div>
-
       <Header />
     </div>
-  )
+  );
 }
-
-export default People
