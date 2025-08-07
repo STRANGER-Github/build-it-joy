@@ -61,6 +61,7 @@ const Home = () => {
   return (
     <>
       {/* Cinematic scrolling banner at top */}
+      
       <ScrollingBanner />
 
       {/* Main content below */}

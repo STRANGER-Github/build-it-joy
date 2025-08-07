@@ -19,7 +19,7 @@ const About = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-left tracking-wide">
               ABOUT US
             </h1>
-
+              
             <div className="grid gap-8 md:grid-cols-3 text-gray-800 text-sm md:text-base leading-relaxed text-justify">
               <p>
                 The teaching and learning technique used at Smt. K.L. Tiwari College of Architecture encourages

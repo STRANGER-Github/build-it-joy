@@ -14,6 +14,7 @@ import {
   FiChevronDown,
   FiChevronUp,
 } from "react-icons/fi";
+import logo from "@/assets/main-logo-with-bg.png";
 
 interface NavItem {
   name: string;
@@ -75,7 +76,7 @@ export default function Header() {
     },
     {
       name: "ADMISSION",
-      href: "/admission",
+      href: "https://admission.rahuleducation.org/architecture-college/",
       icon: <FiInbox />,
       children: [
         { name: "Apply Now", href: "/admission/apply" },
@@ -162,35 +163,41 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Hamburger Top Bar */}
+      {/* Mobile Top Bar (hamburger stays fixed) */}
       <div
-        className={`md:hidden fixed top-0 left-0 right-0 z-[60] flex justify-end px-4 py-3 transition-colors duration-300 ${
-          mobileOpen ? "bg-[#0F2341]/10 backdrop-blur-md shadow-md" : "bg-transparent"
+        className={`md:hidden fixed top-0 right-0 z-[60] flex justify-end items-center px-4 py-3 transition-colors duration-300 ${
+          mobileOpen
+            ? "bg-[#0F2341]/10 backdrop-blur-md shadow-md"
+            : "bg-transparent"
         }`}
       >
-        <button onClick={() => setMobileOpen(true)} className="p-2 rounded-md">
+        {/* Hamburger Menu */}
+        <button onClick={() => setMobileOpen(true)} className="p-2">
           <FiMenu size={24} className="text-black" />
         </button>
       </div>
 
-      {/* Mobile Overlay Menu */}
+      {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-[70] bg-[#0F2341]/90 backdrop-blur-md text-white overflow-y-auto transition-all duration-300">
-          {/* Close Button */}
-          <div className="flex justify-end px-6 py-4">
+        <div className="fixed inset-0 z-[70] bg-[#0F2341]/90 backdrop-blur-md text-white overflow-y-auto">
+          {/* Header inside overlay */}
+          <div className="flex justify-between items-center px-4 py-3 border-b border-white/10">
+            {/* Logo inside the menu overlay */}
+            <img
+              src={logo}
+              alt="Logo"
+              className="rounded-xl h-9 w-auto"
+            />
             <button
-              onClick={() => {
-                console.log("Close clicked");
-                setMobileOpen(false);
-              }}
-              className=" text-white hover:text-gray-300 transition-colors"
+              onClick={() => setMobileOpen(false)}
+              className="text-white hover:text-gray-300"
               aria-label="Close"
             >
               <FiX size={28} />
             </button>
           </div>
 
-          {/* Menu Items */}
+          {/* Navigation Items */}
           <div className="px-6 pb-10">{renderMenuItems(navigationItems)}</div>
         </div>
       )}
