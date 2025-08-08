@@ -2,7 +2,7 @@ import Header from "@/components/Header"
 import MainMenu, { MainMenuItem } from "@/components/MainMenu"
 
 const aboutMenuItems: MainMenuItem[] = [
-  { name: "About Rahul Education", href: "/about/about-ris" },
+  { name: "About Rahul Education", href: "/about/rahul-education" },
   { name: "Our Management", href: "/about/management" },
   { name: "About SKLTCoA", href: "/about/skltcoa" },
   { name: "Our Principal", href: "/about/principal" },
@@ -12,7 +12,7 @@ const aboutMenuItems: MainMenuItem[] = [
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen pb-10 bg-gray-50">
       <div className="flex flex-col md:flex-row">
         <main className="flex-1 p-6 md:mr-64">
           <div className="max-w-5xl mx-auto">

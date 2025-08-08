@@ -12,6 +12,7 @@ import Academics from "./pages/Academics";
 import People from "./pages/People";
 import Admission from "./pages/Admission";
 import Career from "./pages/Career";
+import Contact from "./pages/Contact";
 import Life from "./pages/Life";
 import NotFound from "./pages/NotFound";
 
@@ -39,7 +40,12 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
 
             {/* About Subpage */}
-            <Route path="/about/about-ris" element={<AboutRIS />} />
+            <Route path="/about/rahul-education" element={<AboutRIS />} />
+
+
+
+            <Route path="/contact" element={<Contact />} />
+            
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

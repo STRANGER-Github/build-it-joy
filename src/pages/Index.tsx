@@ -92,6 +92,7 @@ const Index = () => {
           <GridSection
             title="ABOUT US"
             variant="light"
+            linkTo="/about"
             onClick={() => handleSectionClick("about")}
             className="border-b border-border transition-all duration-700 ease-in-out"
             style={{ flexBasis: getFlexBasis("ABOUT US") }}
@@ -104,8 +105,9 @@ const Index = () => {
         {/* Bottom Row */}
         <div className="flex transition-all duration-700 ease-in-out" style={{ height: getRowHeight("bottom") }}>
           <GridSection
-            title="CAREER"
+            title="LIFE AT SKLTCOA"
             variant="light"
+            linkTo="/life"
             onClick={() => handleSectionClick("home")}
             className="border-r border-border transition-all duration-700 ease-in-out"
             style={{ flexBasis: getFlexBasis("HOME") }}
@@ -114,8 +116,9 @@ const Index = () => {
             isHovered={hoveredSection === "HOME"}
           />
           <GridSection
-            title="LIFE AT SKLTCOA"
+            title="CONTACT"
             variant="dark"
+            linkTo="/contact"
             onClick={() => handleSectionClick("life")}
             className="transition-all duration-700 ease-in-out"
             style={{ flexBasis: getFlexBasis("LIFE AT SKLTCOA") }}

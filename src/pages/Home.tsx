@@ -53,7 +53,7 @@ const navLinks = [
   { label: "LIFE@SKLTCOA", path: "/life" },
   { label: "ABOUT US", path: "/about" },
   { label: "EXAMINATION", path: "/examination" },
-  { label: "ADMISSION", path: "/admission" },
+  { label: "ADMISSION", path: "https://admission.rahuleducation.org/architecture-college/" },
   { label: "CONTACT", path: "/contact" },
 ];
 

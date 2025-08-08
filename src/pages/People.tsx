@@ -51,7 +51,7 @@ export default function People() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-gray-100 pb-20">
+    <div className="min-h-screen pb-10 bg-gray-100 pb-20">
       <div className="max-w-7xl mx-auto px-4 pt-16">
         <h1 className="text-3xl md:text-4xl font-semibold text-gray-800 mb-6">
           FACULTIES

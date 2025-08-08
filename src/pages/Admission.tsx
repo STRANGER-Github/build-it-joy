@@ -32,7 +32,7 @@ const Admission = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 ">
+    <div className="min-h-screen pb-10 bg-gray-50 ">
       <div className="flex flex-col md:flex-row">
         <main className="flex-1 p-6 md:mr-64">
           <div className="max-w-5xl mx-auto">

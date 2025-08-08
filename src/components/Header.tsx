@@ -16,6 +16,7 @@ import {
 } from "react-icons/fi";
 import logo from "@/assets/main-logo-with-bg.png";
 
+// Define interface
 interface NavItem {
   name: string;
   href: string;
@@ -29,77 +30,51 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [expandedPaths, setExpandedPaths] = useState<string[]>([]);
 
+  // Define nav items
   const navigationItems: NavItem[] = [
     {
       name: "HOME",
       href: "/home",
-      icon: <FiHome />,
-      children: [
-        { name: "Overview", href: "/home/overview" },
-        { name: "Updates", href: "/home/updates" },
-      ],
+      icon: <FiHome className="w-4 h-4" />,
     },
     {
       name: "ABOUT",
       href: "/about",
-      icon: <FiUser />,
+      icon: <FiUser className="w-4 h-4" />,
       children: [
-        { name: "Our Story", href: "/about/our-story" },
-        {
-          name: "Vision & Mission",
-          href: "/about/vision-mission",
-          children: [
-            { name: "Vision", href: "/about/vision-mission/vision" },
-            { name: "Mission", href: "/about/vision-mission/mission" },
-          ],
-        },
-        { name: "Leadership", href: "/about/leadership" },
+        { name: "Rahul Education", href: "/about/rahul-education" },
       ],
     },
     {
       name: "ACADEMICS",
       href: "/academics",
-      icon: <FiBookOpen />,
-      children: [
-        { name: "Programs", href: "/academics/programs" },
-        { name: "Syllabus", href: "/academics/syllabus" },
-      ],
+      icon: <FiBookOpen className="w-4 h-4" />,
     },
     {
       name: "PEOPLE",
       href: "/people",
-      icon: <FiUsers />,
-      children: [
-        { name: "Faculty", href: "/people/faculty" },
-        { name: "Students", href: "/people/students" },
-      ],
+      icon: <FiUsers className="w-4 h-4" />,
     },
     {
       name: "ADMISSION",
       href: "https://admission.rahuleducation.org/architecture-college/",
-      icon: <FiInbox />,
-      children: [
-        { name: "Apply Now", href: "/admission/apply" },
-        { name: "Process", href: "/admission/process" },
-      ],
+      icon: <FiInbox className="w-4 h-4" />,
     },
     {
       name: "LIFE",
       href: "/life",
-      icon: <FiGrid />,
-      children: [
-        { name: "Campus Life", href: "/life/campus" },
-        { name: "Clubs", href: "/life/clubs" },
-      ],
+      icon: <FiGrid className="w-4 h-4" />,
     },
   ];
 
+  // Toggle expand
   const toggleExpand = (path: string) => {
     setExpandedPaths((prev) =>
       prev.includes(path) ? prev.filter((p) => p !== path) : [...prev, path]
     );
   };
 
+  // Recursive render for nested items
   const renderMenuItems = (items: NavItem[], pathPrefix = "") => {
     return items.map((item) => {
       const fullPath = `${pathPrefix}${item.href}`;
@@ -165,14 +140,16 @@ export default function Header() {
 
       {/* Mobile Top Bar (hamburger stays fixed) */}
       <div
-        className={`md:hidden fixed top-0 right-0 z-[60] flex justify-end items-center px-4 py-3 transition-colors duration-300 ${
-          mobileOpen
-            ? "bg-[#0F2341]/10 backdrop-blur-md shadow-md"
-            : "bg-transparent"
-        }`}
-      >
+  className={`md:hidden flex justify-end items-center px-4 py-3 transition-colors duration-300 ${
+    mobileOpen
+      ? "bg-[#0F2341]/10 backdrop-blur-md shadow-md"
+      : "bg-transparent"
+  }`}
+  style={{ position: "absolute", top: 0, right: 0, zIndex: 60 }}
+>
+
         {/* Hamburger Menu */}
-        <button onClick={() => setMobileOpen(true)} className="p-2">
+        <button onClick={() => setMobileOpen(true)} className="p-5">
           <FiMenu size={24} className="text-black" />
         </button>
       </div>
@@ -182,12 +159,7 @@ export default function Header() {
         <div className="fixed inset-0 z-[70] bg-[#0F2341]/90 backdrop-blur-md text-white overflow-y-auto">
           {/* Header inside overlay */}
           <div className="flex justify-between items-center px-4 py-3 border-b border-white/10">
-            {/* Logo inside the menu overlay */}
-            <img
-              src={logo}
-              alt="Logo"
-              className="rounded-xl h-9 w-auto"
-            />
+            <img src={logo} alt="Logo" className="rounded-xl h-9 w-auto" />
             <button
               onClick={() => setMobileOpen(false)}
               className="text-white hover:text-gray-300"
@@ -201,6 +173,29 @@ export default function Header() {
           <div className="px-6 pb-10">{renderMenuItems(navigationItems)}</div>
         </div>
       )}
+
+      {/* Mobile Bottom Nav Bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0F2341] border-t border-gray-700 z-50">
+        <div className="grid grid-cols-6 gap-1 px-3 py-2 text-center">
+          {navigationItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={`flex flex-col items-center text-[10px] font-medium uppercase tracking-wide transition-colors ${
+                  isActive
+                    ? "text-white font-semibold"
+                    : "text-gray-300 hover:text-white"
+                }`}
+              >
+                <div className="mb-1">{item.icon}</div>
+                {item.name}
+              </Link>
+            );
+          })}
+        </div>
+      </div>
     </>
   );
 }

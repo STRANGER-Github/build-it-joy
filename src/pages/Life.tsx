@@ -33,7 +33,7 @@ export default function LandingBlocks() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen overflow-hidden">
+    <div className="flex flex-col md:flex-row min-h-screen pb-10 overflow-hidden">
       {sections.map(({ title, subtitle, href, image, bgColor }, index) => {
         const isHovered = index === hoveredIndex;
 
