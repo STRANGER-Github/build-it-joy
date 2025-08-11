@@ -27,29 +27,26 @@ const Academics = () => {
 
             <div className="text-gray-800 text-base leading-relaxed space-y-6 text-justify">
               <p className="font-semibold">
-                Academic Philosophy: Architecture as a Reflection of Humanity and Nature
+                Programs & Curriculum
               </p>
               <p>
-                At Smt. K.L. Tiwari College of Architecture (SKLTCOA), architecture is not merely about constructing buildings; it is about constructing ideas, shaping identities, and creating spaces that reflect the deepest values of humanity. Our philosophy is rooted in constructivism, where learning is an active and immersive process, blending theory with practice and reflection with action. For us, architecture is a profound act of creation that balances human needs, cultural identity, and harmony with nature, while fostering sustainable and socially viable solutions.
+                Smt. K.L. Tiwari College of Architecture (SKLTCOA) offers a 5-year full-time Bachelor of Architecture (B.Arch) program, approved by the Council of Architecture (COA) and affiliated with the University of Mumbai. Our 10-semester curriculum blends creativity, technical expertise, and cultural awareness, covering design studios, architectural theory and history, building construction, environmental studies, structural systems, professional practice, and urban design. Each subject is designed to help students master both the artistic and scientific aspects of architecture, ensuring a balance between tradition, innovation, and sustainability.
               </p>
 
               <p className="font-semibold">
-                Humanism: Architecture as the Soul of Society
+                Learning Approach
               </p>
               <p>
-                Architecture is the language through which humanity tells its stories. Inspired by the principles of humanism, we believe that every space must serve the human spirit, addressing both physical needs and emotional well-being. At SKLTCOA, our students learn to design spaces that are inclusive, empathetic, and alive with meaning. From homes that nurture families to public spaces that foster connection, architecture becomes a vessel for peaceful coexistence, a stage where humanity finds expression and community thrives.
+                At SKLTCOA, learning goes beyond classrooms through a blend of studio-based training and field exposure. Students participate in workshops and seminars led by industry experts, site visits to heritage and modern projects, and study tours for real-world learning. Model making, prototyping, and collaborative projects encourage hands-on problem-solving and teamwork. This immersive approach ensures that students not only gain technical skills but also develop the confidence and creativity required for professional practice.
               </p>
 
               <p className="font-semibold">
-                Constructivism: Learning by Doing and Being
+                Facilities, Assessment & Growth
               </p>
               <p>
-                Education at SKLTCOA is not a passive transfer of knowledge—it is an active and iterative process of creation. Drawing from constructivist theories by Jean Piaget and Lev Vygotsky, we believe that learning happens through doing, experimenting, and reflecting. Whether it is designing a sustainable housing model, restoring a historic temple, or ideating a new public space, students are at the center of their learning journey, building knowledge brick by brick through real-world applications.
+                Our campus offers inspiring spaces for learning, including well-equipped design studios, a construction yard for hands-on building techniques, a material museum, a computer lab with advanced design software, and a library with rich resources. Continuous assessment through studio juries, portfolio reviews, assignments, and practical evaluations ensures steady progress. With experienced faculty, strong industry connections, and a focus on sustainability and innovation, SKLTCOA nurtures well-rounded architects ready to shape better communities and a better future.
               </p>
 
-              <p>
-                In our studios, workshops, and field immersions, students become problem-solvers and innovators, translating abstract concepts into tangible designs. This active learning process ensures that every project is not only an academic exercise but also a meaningful contribution to society and culture.
-              </p>
             </div>
           </div>
 

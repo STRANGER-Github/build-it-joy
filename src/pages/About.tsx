@@ -19,30 +19,21 @@ const About = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-left tracking-wide">
               ABOUT US
             </h1>
-              
+
             <div className="grid gap-8 md:grid-cols-3 text-gray-800 text-sm md:text-base leading-relaxed text-justify">
               <p>
-                The teaching and learning technique used at Smt. K.L. Tiwari College of Architecture encourages
-                faculty to map the Programmed Outcome and plan, implement, monitor, and evaluate (through internal
-                and external evaluation). The continual assessment that students complete based on the learning
-                outcomes of various topics is a reflection of the teaching-learning that takes place in the
-                institute. The institution assesses whether Programme Outcomes and Course Outcomes have been attained.
+                Smt. K.L. Tiwari College of Architecture (SKLTCOA) is dedicated to fostering a learning environment grounded in outcome-based education. At the beginning of each academic year, the institution formulates its academic calendar in line with the University of Mumbai, setting a structured framework for undergraduate and postgraduate programmes. Faculty members at SKLTCOA actively map Programme Outcomes (POs) and Course Outcomes (COs) while planning, implementing, monitoring, and evaluating the academic delivery. Continuous internal and external assessments help ensure that learning objectives are being met and that students are progressing in alignment with the academic goals of the institution.
               </p>
 
               <p>
-                At the start of each academic session, the institution develops its own academic calendar
-                (for both undergraduate and postgraduate programmes), following the university’s academic calendar.
-                The primary goal of coursework delivery or programme outcomes is to provide students with the current
-                knowledge and practical skills they will need to handle issues in the future.
+                The teaching-learning methodology at SKLTCOA places strong emphasis on reflective practice, allowing faculty to continuously assess and improve their pedagogical strategies. Students engage in outcome-based assessments that measure their understanding of course content and application of knowledge. This approach not only enhances academic performance but also equips students with the skills needed to address real-world architectural challenges with creativity and confidence. The curriculum is designed to integrate current knowledge and practical skills, preparing students for the evolving demands of the architectural profession.
               </p>
 
               <p>
-                Through a variety of workshops on classic and modern architectural issues, Smt. K.L. Tiwari College
-                of Architecture offers students several opportunities to transform the way that learning is often
-                done. Students are exposed to the art of space creation through regular, creative workshops that also
-                help to make them aware of built-environment challenges.
+                Beyond the classroom, SKLTCOA enriches the academic journey through a series of hands-on workshops and interactive sessions. These workshops focus on both traditional and contemporary architectural themes, encouraging students to think critically and innovate. Regular exposure to the art of space creation and built-environment issues helps students develop a deeper understanding of their role as future architects. By embracing a dynamic and experiential model of education, the institution ensures its graduates are not only academically proficient but also socially conscious and professionally prepared.
               </p>
             </div>
+            
           </div>
         </main>
 

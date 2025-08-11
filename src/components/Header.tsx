@@ -57,7 +57,7 @@ export default function Header() {
     },
     {
       name: "ADMISSION",
-      href: "https://admission.rahuleducation.org/architecture-college/",
+      href: "/admission",
       icon: <FiInbox className="w-4 h-4" />,
     },
     {

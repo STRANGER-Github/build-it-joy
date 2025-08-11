@@ -23,12 +23,12 @@ const Contact = () => {
 
             <div>
               <p className="font-semibold">Phone:</p>
-              <p>1800 210 1002</p>
+              <p>8007916355</p>
             </div>
 
             <div>
               <p className="font-semibold">Email:</p>
-              <p>contact@rahuleducation.com</p>
+              <p>skltcoa@gmail.com</p>
             </div>
 
             <div>

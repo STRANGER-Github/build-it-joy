@@ -5,28 +5,26 @@ const ScrollingBanner = () => {
   return (
     <div className="mt-6 px-6">
       <div className="overflow-hidden w-full rounded-xl h-[350px] relative">
-        {/* Scrolling background images */}
-        <div className="absolute inset-0 flex gap-x-4 animate-scroll-left">
+        {/* Scrolling background container */}
+        <div className="absolute inset-0 flex w-[200%] animate-scroll-left">
           <img
             src={panoImage}
             alt="Scrolling panoramic"
-            className="h-full object-cover grayscale"
-            style={{ width: "400%" }}
+            className="w-1/2 h-full object-cover grayscale"
           />
           <img
             src={panoImage}
             alt="Scrolling panoramic"
-            className="h-full object-cover grayscale"
-            style={{ width: "400%" }}
+            className="w-1/2 h-full object-cover grayscale"
           />
         </div>
 
-        {/* Desktop Logo (Visible on sm and above) */}
+        {/* Desktop Logo */}
         <div className="absolute hidden sm:block top-3 left-3 z-50">
           <img src={logo} alt="Logo" className="h-12 rounded-xl w-auto" />
         </div>
 
-        {/* Mobile Logo (Visible below sm only) */}
+        {/* Mobile Logo */}
         <div className="absolute sm:hidden top-1 left-1 z-50">
           <img src={logo} alt="Logo" className="rounded-xl h-9 w-auto" />
         </div>

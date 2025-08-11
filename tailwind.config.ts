@@ -55,9 +55,9 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				'grid-dark': 'hsl(var(--grid-dark))',
+				'grid-dark': '#1E2E51',
 				'grid-dark-foreground': 'hsl(var(--grid-dark-foreground))',
-				'grid-light': 'hsl(var(--grid-light))',
+				'grid-light': '#7a7c7eff',
 				'grid-light-foreground': 'hsl(var(--grid-light-foreground))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -100,7 +100,7 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				"scroll-left": "scroll-left 10s linear infinite",
+				"scroll-left": "scroll-left 20s linear infinite",
 			}
 		}
 	},
