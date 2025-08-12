@@ -35,7 +35,7 @@ const MainMenu = ({ items, className = "" }: MainMenuProps) => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`block text-sm md:text-base font-medium transition-colors duration-200 ${
+                className={`block text-sm md:text-xl font-medium transition-colors duration-200 ${
                   isActive
                     ? "text-blue-700 font-semibold underline"
                     : "text-black hover:text-blue-700"

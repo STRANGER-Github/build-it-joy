@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; // ✅ React Router import
+import { Link } from "react-router-dom"; 
 import ScrollingBanner from "@/components/ScrollingBanner";
 import Header from "@/components/Header";
 import { ArrowRight } from "lucide-react";
@@ -110,7 +110,7 @@ const Home = () => {
                   href={`https://www.youtube.com/watch?v=${id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative w-full lg:h-[12.1rem] h-[12.5rem] overflow-hidden block"
+                  className="relative w-full lg:h-[12.1rem] h-[11.5rem] overflow-hidden block"
                 >
                   <img
                     src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}

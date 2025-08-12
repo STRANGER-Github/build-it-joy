@@ -60,14 +60,16 @@ const GridSection = ({
     >
       {/* Background image */}
       {backgroundImage && (
-        <div
-          className={cn(
-            "absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-in-out",
-            isHovered ? "opacity-100" : "opacity-0"
-          )}
-          style={{ backgroundImage: `url(${backgroundImage})` }}
-        />
-      )}
+  <div
+    className={cn(
+      "absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-in-out",
+      "grayscale", // <-- Add this class
+      isHovered ? "opacity-100" : "opacity-0"
+    )}
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+  />
+)}
+
 
       {/* Foreground title */}
       <div className="relative z-10">

@@ -17,7 +17,12 @@ import Life from "./pages/Life";
 import NotFound from "./pages/NotFound";
 
 //About imports
-import AboutRIS from "./pages/About/AboutRIS";
+import RahulEducation from "./pages/About/RahuIEducation";
+import Skltcoa from "./pages/About/SKLTCOA";
+import Principal from "./pages/About/Principal";
+import VisionAndMission from "./pages/About/VisionAndMission";
+import CollegeBrochure from "./pages/About/Brochure";
+import { Pin } from "lucide-react";
 
 const queryClient = new QueryClient();
 
@@ -40,7 +45,11 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
 
             {/* About Subpage */}
-            <Route path="/about/rahul-education" element={<AboutRIS />} />
+            <Route path="/about/rahul-education" element={<RahulEducation />} />
+            <Route path="/about/skltcoa" element={<Skltcoa />} />
+            <Route path="/about/principal" element={<Principal />} />
+            <Route path="/about/vision-mission" element={<VisionAndMission />} />
+            <Route path="/about/brochure" element={<CollegeBrochure />} />
 
 
 

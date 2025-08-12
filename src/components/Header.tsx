@@ -43,6 +43,11 @@ export default function Header() {
       icon: <FiUser className="w-4 h-4" />,
       children: [
         { name: "Rahul Education", href: "/about/rahul-education" },
+        // { name: "Our Management", href: "/about/management" },
+        { name: "About SKLTCoA", href: "/about/skltcoa" },
+        { name: "Our Principal", href: "/about/principal" },
+        { name: "Vision And Mission", href: "/about/vision-mission" },
+        { name: "College Brochure", href: "/about/brochure" },
       ],
     },
     {
