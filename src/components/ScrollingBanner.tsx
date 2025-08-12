@@ -3,8 +3,8 @@ import logo from "@/assets/main-logo-with-bg.png";
 
 const ScrollingBanner = () => {
   return (
-    <div className="mt-6 px-6">
-      <div className="overflow-hidden w-full rounded-xl h-[350px] relative">
+    <div className="mt-6 px-4">
+      <div className="overflow-hidden w-full rounded-xl h-[400px] relative">
         {/* Scrolling background container */}
         <div className="absolute inset-0 flex w-[200%] animate-scroll-left">
           <img
