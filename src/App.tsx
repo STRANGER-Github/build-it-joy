@@ -18,7 +18,7 @@ import NotFound from "./pages/NotFound";
 
 //About imports
 import RahulEducation from "./pages/About/RahuIEducation";
-import Skltcoa from "./pages/About/SKLTCOA";
+import Skltcoa from "./pages/About/Skltcoa";
 import Principal from "./pages/About/Principal";
 import VisionAndMission from "./pages/About/VisionAndMission";
 import CollegeBrochure from "./pages/About/Brochure";

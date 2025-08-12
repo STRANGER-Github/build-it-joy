@@ -35,7 +35,7 @@ const GridSection = ({
 
   // Map each title to its image
   const backgroundImages: Record<string, string> = {
-    "HOME": architectModel,
+    "ARCHITECT": architectModel,
     "ABOUT US": aboutModel,
     "LIFE AT SKLTCOA": home,
     "CONTACT": lifeskltcoa,

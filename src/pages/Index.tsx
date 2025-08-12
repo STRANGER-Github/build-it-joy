@@ -2,7 +2,7 @@ import { useState } from "react";
 import GridSection from "@/components/GridSection";
 
 const Index = () => {
-  const [hoveredSection, setHoveredSection] = useState<string>("ARCHITECT");
+  const [hoveredSection, setHoveredSection] = useState<string | null>(null);
   const [hasUserHovered, setHasUserHovered] = useState(false);
 
   const handleSectionClick = (section: string) => {
@@ -79,7 +79,7 @@ const Index = () => {
         {/* Top Row */}
         <div className="flex transition-all duration-700 ease-in-out" style={{ height: getRowHeight("top") }}>
           <GridSection
-            title="HOME"
+            title="ARCHITECT"
             variant="dark"
             linkTo="/home"
             onClick={() => handleSectionClick("architect")}
