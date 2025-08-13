@@ -15,21 +15,25 @@ const Index = () => {
   };
 
   const handleMouseLeave = (section: string) => {
-    if (hasUserHovered) setHoveredSection(null);
+    if (hasUserHovered) {
+      setHoveredSection(null);
+    }
   };
 
-  // Row height logic (same as before)
+  // Helper to get the effective hovered section (fallback to "HOME" if none and no user hover)
+  const effectiveHoveredSection =
+    hoveredSection || (!hasUserHovered ? "ARCHITECT" : null);
+
   const getRowHeight = (row: "top" | "bottom") => {
-    if (hoveredSection === "ARCHITECT") return row === "top" ? "60%" : "40%";
-    if (hoveredSection === "ABOUT US") return row === "top" ? "65%" : "35%";
-    if (hoveredSection === "HOME") return row === "bottom" ? "65%" : "35%";
-    if (hoveredSection === "LIFE AT SKLTCOA") return row === "bottom" ? "70%" : "30%";
+    if (effectiveHoveredSection === "ARCHITECT") return row === "top" ? "60%" : "40%";
+    if (effectiveHoveredSection === "ABOUT US") return row === "top" ? "65%" : "35%";
+    if (effectiveHoveredSection === "HOME") return row === "bottom" ? "65%" : "35%";
+    if (effectiveHoveredSection === "LIFE AT SKLTCOA") return row === "bottom" ? "70%" : "30%";
     return "50%";
   };
 
-  // Column width logic (same as before)
   const getFlexBasis = (section: string) => {
-    if (hoveredSection === "ARCHITECT") {
+    if (effectiveHoveredSection === "ARCHITECT") {
       switch (section) {
         case "ARCHITECT":
         case "LIFE AT SKLTCOA":
@@ -39,7 +43,7 @@ const Index = () => {
           return "35%";
       }
     }
-    if (hoveredSection === "ABOUT US") {
+    if (effectiveHoveredSection === "ABOUT US") {
       switch (section) {
         case "ABOUT US":
         case "HOME":
@@ -49,7 +53,7 @@ const Index = () => {
           return "30%";
       }
     }
-    if (hoveredSection === "HOME") {
+    if (effectiveHoveredSection === "HOME") {
       switch (section) {
         case "HOME":
         case "ABOUT US":
@@ -59,7 +63,7 @@ const Index = () => {
           return "30%";
       }
     }
-    if (hoveredSection === "LIFE AT SKLTCOA") {
+    if (effectiveHoveredSection === "LIFE AT SKLTCOA") {
       switch (section) {
         case "LIFE AT SKLTCOA":
         case "ARCHITECT":
@@ -77,9 +81,12 @@ const Index = () => {
     <div className="h-screen w-full overflow-hidden bg-background">
       <div className="flex flex-col h-full">
         {/* Top Row */}
-        <div className="flex transition-all duration-700 ease-in-out" style={{ height: getRowHeight("top") }}>
+        <div
+          className="flex transition-all duration-700 ease-in-out"
+          style={{ height: getRowHeight("top") }}
+        >
           <GridSection
-            title="ARCHITECT"
+            title="HOME"
             variant="dark"
             linkTo="/home"
             onClick={() => handleSectionClick("architect")}
@@ -87,7 +94,7 @@ const Index = () => {
             style={{ flexBasis: getFlexBasis("ARCHITECT") }}
             onMouseEnter={() => handleMouseEnter("ARCHITECT")}
             onMouseLeave={() => handleMouseLeave("ARCHITECT")}
-            isHovered={hoveredSection === "ARCHITECT"}
+            isHovered={effectiveHoveredSection === "ARCHITECT"}
           />
           <GridSection
             title="ABOUT US"
@@ -98,12 +105,15 @@ const Index = () => {
             style={{ flexBasis: getFlexBasis("ABOUT US") }}
             onMouseEnter={() => handleMouseEnter("ABOUT US")}
             onMouseLeave={() => handleMouseLeave("ABOUT US")}
-            isHovered={hoveredSection === "ABOUT US"}
+            isHovered={effectiveHoveredSection === "ABOUT US"}
           />
         </div>
 
         {/* Bottom Row */}
-        <div className="flex transition-all duration-700 ease-in-out" style={{ height: getRowHeight("bottom") }}>
+        <div
+          className="flex transition-all duration-700 ease-in-out"
+          style={{ height: getRowHeight("bottom") }}
+        >
           <GridSection
             title="LIFE AT SKLTCOA"
             variant="light"
@@ -113,7 +123,7 @@ const Index = () => {
             style={{ flexBasis: getFlexBasis("HOME") }}
             onMouseEnter={() => handleMouseEnter("HOME")}
             onMouseLeave={() => handleMouseLeave("HOME")}
-            isHovered={hoveredSection === "HOME"}
+            isHovered={effectiveHoveredSection === "HOME"}
           />
           <GridSection
             title="CONTACT"
@@ -124,7 +134,7 @@ const Index = () => {
             style={{ flexBasis: getFlexBasis("LIFE AT SKLTCOA") }}
             onMouseEnter={() => handleMouseEnter("LIFE AT SKLTCOA")}
             onMouseLeave={() => handleMouseLeave("LIFE AT SKLTCOA")}
-            isHovered={hoveredSection === "LIFE AT SKLTCOA"}
+            isHovered={effectiveHoveredSection === "LIFE AT SKLTCOA"}
           />
         </div>
       </div>

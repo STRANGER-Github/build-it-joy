@@ -16,7 +16,6 @@ import {
 } from "react-icons/fi";
 import logo from "@/assets/main-logo-with-bg.png";
 
-// Define interface
 interface NavItem {
   name: string;
   href: string;
@@ -27,10 +26,10 @@ interface NavItem {
 export default function Header() {
   const location = useLocation();
   const pathname = location.pathname;
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [expandedPaths, setExpandedPaths] = useState<string[]>([]);
 
-  // Define nav items
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
+
   const navigationItems: NavItem[] = [
     {
       name: "HOME",
@@ -43,7 +42,6 @@ export default function Header() {
       icon: <FiUser className="w-4 h-4" />,
       children: [
         { name: "Rahul Education", href: "/about/rahul-education" },
-        // { name: "Our Management", href: "/about/management" },
         { name: "About SKLTCoA", href: "/about/skltcoa" },
         { name: "Our Principal", href: "/about/principal" },
         { name: "Vision And Mission", href: "/about/vision-mission" },
@@ -72,14 +70,23 @@ export default function Header() {
     },
   ];
 
-  // Toggle expand
+  const [expandedPaths, setExpandedPaths] = useState<string[]>([]);
   const toggleExpand = (path: string) => {
     setExpandedPaths((prev) =>
       prev.includes(path) ? prev.filter((p) => p !== path) : [...prev, path]
     );
   };
 
-  // Recursive render for nested items
+  const openMenu = () => {
+    setMenuVisible(true);
+    setTimeout(() => setMobileOpen(true), 10);
+  };
+
+  const closeMenu = () => {
+    setMobileOpen(false);
+    setTimeout(() => setMenuVisible(false), 300);
+  };
+
   const renderMenuItems = (items: NavItem[], pathPrefix = "") => {
     return items.map((item) => {
       const fullPath = `${pathPrefix}${item.href}`;
@@ -91,7 +98,7 @@ export default function Header() {
           <div className="flex justify-between items-center">
             <Link
               to={item.href}
-              onClick={() => setMobileOpen(false)}
+              onClick={closeMenu}
               className={`flex gap-2 items-center text-sm px-3 py-2 rounded-md transition-all duration-200 ${
                 isActive
                   ? "bg-white/10 text-white border border-blue-500 shadow-inner"
@@ -105,6 +112,7 @@ export default function Header() {
               <button
                 className="p-1 text-gray-300"
                 onClick={() => toggleExpand(fullPath)}
+                aria-label={isExpanded ? "Collapse submenu" : "Expand submenu"}
               >
                 {isExpanded ? <FiChevronUp /> : <FiChevronDown />}
               </button>
@@ -125,7 +133,7 @@ export default function Header() {
     <>
       {/* Desktop Footer Header */}
       <header className="fixed bottom-0 left-0 right-0 bg-[#0F2341] text-white z-50 border-t border-gray-700 hidden md:block">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+        <div className="max-w-[100rem] mx-auto px-32 py-4 flex justify-between">
           {navigationItems.map((item) => (
             <Link
               key={item.href}
@@ -143,39 +151,51 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Top Bar (hamburger stays fixed) */}
+      {/* Mobile Top Bar */}
       <div
-  className={`md:hidden flex justify-end items-center px-4 py-3 transition-colors duration-300 ${
-    mobileOpen
-      ? "bg-[#0F2341]/10 backdrop-blur-md shadow-md"
-      : "bg-transparent"
-  }`}
-  style={{ position: "absolute", top: 0, right: 0, zIndex: 60 }}
->
-
-        {/* Hamburger Menu */}
-        <button onClick={() => setMobileOpen(true)} className="p-5">
+        className={`md:hidden flex justify-end items-center px-4 py-3 transition-colors duration-300 ${
+          mobileOpen
+            ? "bg-[#0F2341]/10 backdrop-blur-md shadow-md"
+            : "bg-transparent"
+        }`}
+        style={{ position: "absolute", top: 0, right: 0, zIndex: 60 }}
+      >
+        <button onClick={openMenu} className="p-5" aria-label="Open menu">
           <FiMenu size={24} className="text-black" />
         </button>
       </div>
 
       {/* Mobile Menu Overlay */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-[70] bg-[#0F2341]/90 backdrop-blur-md text-white overflow-y-auto">
-          {/* Header inside overlay */}
+      {menuVisible && (
+        <div
+          className={`fixed inset-0 z-[70] bg-[#0F2341]/90 backdrop-blur-md text-white overflow-y-auto
+            transition-opacity duration-300 ease-in-out
+            ${mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+          `}
+        >
           <div className="flex justify-between items-center px-4 py-3 border-b border-white/10">
             <img src={logo} alt="Logo" className="rounded-xl h-9 w-auto" />
             <button
-              onClick={() => setMobileOpen(false)}
+              onClick={closeMenu}
               className="text-white hover:text-gray-300"
-              aria-label="Close"
+              aria-label="Close menu"
             >
               <FiX size={28} />
             </button>
           </div>
 
-          {/* Navigation Items */}
-          <div className="px-6 pb-10">{renderMenuItems(navigationItems)}</div>
+          {/* Slide down/up menu content */}
+          <div
+            className={`px-6 pb-10 transform transition-transform duration-300 origin-top
+              ${
+                mobileOpen
+                  ? "translate-y-0 opacity-100"
+                  : "-translate-y-full opacity-0"
+              }
+            `}
+          >
+            {renderMenuItems(navigationItems)}
+          </div>
         </div>
       )}
 

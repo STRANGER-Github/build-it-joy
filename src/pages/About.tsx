@@ -23,8 +23,8 @@ const About = () => {
     <div className="min-h-screen pb-10 bg-gray-50">
       <div className="flex flex-col md:flex-row">
         <main className="flex-1 p-6 md:p-10">
-          <h1 className="text-4xl lg:text-7xl font-bold text-gray-900 mb-12 text-left tracking-wide">
-            ABOUT US
+          <h1 className="text-5xl font-bold text-gray-900 mb-12 tracking-wide">
+                            ABOUT US
           </h1>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-gray-800 text-sm sm:text-base md:text-lg lg:text-xl lg:leading-[2] text-justify">

@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import MainMenu, { MainMenuItem } from "@/components/MainMenu";
-// import Principal from "@/assets/People/";
+import PrincipalIMG from "@/assets/arch-principal.jpg";
 
 const aboutMenuItems: MainMenuItem[] = [
     { name: "About Rahul Education", href: "/about/rahul-education" },
@@ -25,25 +25,30 @@ const Principal = () => {
                         <div className="text-gray-800 text-sm sm:text-base md:text-lg lg:leading-[2] lg:text-xl space-y-8 text-justify">
                             {/* Two paragraphs with image beside them */}
                             <div className="flex flex-col md:flex-row gap-6 max-w-8xl">
-                                {/* Text block */}
-                                <div className="flex-1 space-y-6 max-w-6xl">
-                                    <p>
-                                        In The Recent Few Decades, Architecture As A Profession Has Undergone Some Key Changes. With Technological Intervention In Every Sphere Of Life Today, Disciplines Like Art And Architecture Have Been Influenced The Most.
-                                    </p> <br />
-                                    <p>
-                                        In Such Changing Times, The Need To Stay Updated With The Latest In The Industry, Must Be Addressed. As A Group Serving The Education Sector For Years Now, We Understand The Concern And Plan To Address It At The Earliest.
-                                    </p>
-                                </div>
-
                                 {/* Image block */}
-                                <div className="flex-shrink-0">
+                                <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
                                     <img
-                                        src="/images/principal.jpg"
+                                        src={PrincipalIMG}
                                         alt="Principal of SKLTCOA"
-                                        className="w-48 h-64 object-cover rounded-md shadow-sm"
+                                        className="w-64 h-80 rounded-2xl object-cover shadow-sm"
                                     />
                                 </div>
+                                {/* Text block */}
+                                <div className="flex-1 space-y-6 max-w-6xl">
+                                    <p className="text-2xl">
+                                        <b>Mrs. Rupali Gupte - Principal (Architecture)</b>
+                                    </p>
+                                    <p>
+                                        In The Recent Few Decades, Architecture As A Profession Has Undergone Some Key Changes. With Technological Intervention In Every Sphere Of Life Today, Disciplines Like Art And Architecture Have Been Influenced The Most.
+                                    </p>
+                                    <p>
+                                        As A Group Serving The Education Sector For Years Now, We Understand The Concern And Plan To Address It At The Earliest.
+                                    </p>
+                                </div>
                             </div>
+                                    {/* <p className="text-2xl">
+                                        <b>Mrs. Rupali Gupte</b>
+                                    </p> */}
 
                             {/* Remaining paragraph */}
                             <p>
@@ -52,8 +57,8 @@ const Principal = () => {
                         </div>
 
                     </div>
-          <br />
-          <hr />
+                    <br />
+                    <hr />
                 </main>
 
                 {/* Sidebar menu */}

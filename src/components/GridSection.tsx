@@ -4,9 +4,9 @@ import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
 
 import architectModel from "@/assets/architect-model.jpeg"
-import aboutModel from "@/assets/about-model.png"
-import home from "@/assets/home-model.png"
-import lifeskltcoa from "@/assets/contact.png"
+import aboutModel from "@/assets/about-us.jpg"
+import home from "@/assets/life-skltcoa.jpg"
+import lifeskltcoa from "@/assets/contact-us.jpg"
 
 interface GridSectionProps {
   title: string
@@ -35,7 +35,7 @@ const GridSection = ({
 
   // Map each title to its image
   const backgroundImages: Record<string, string> = {
-    "ARCHITECT": architectModel,
+    "HOME": architectModel,
     "ABOUT US": aboutModel,
     "LIFE AT SKLTCOA": home,
     "CONTACT": lifeskltcoa,
